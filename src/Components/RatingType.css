@@ -1,0 +1,40 @@
+h5{
+    text-align: center;
+    color: white;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+   
+}
+.header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background: black;
+}
+.btn-primary {
+    color: #fff;
+    background-color: rgb(29 154 91);
+    border-color: rgb(29 154 91);
+}
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgb(29 154 91);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.container1{
+    margin-top: 134px;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #1d9a5b;
+    border-color: #1d9a5b;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #1d9a5b;
+    border-color: #1d9a5b;
+}

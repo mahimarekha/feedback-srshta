@@ -1,0 +1,23 @@
+.width{
+    width: 50%;
+}
+.heading {
+    line-height: 1;
+    font-weight: 500;
+    color: #5a6169;
+    margin-top: 18px;
+}
+.list-group1{
+    width: 100%;
+    margin-top: 10px;
+}
+.del{
+    margin-left: 5rem;
+}
+.add-another-query{
+margin-left: 279px;
+color: teal;
+}
+.flex{
+display: flex;
+}
