@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
 import * as Yup from "yup";
+import URL  from '../app.config';
 import "./Multiple.css";
 import axios from "axios";
 import * as Icon from "react-bootstrap-icons";
@@ -46,7 +47,7 @@ const Multiple = () => {
             };
             axios({
               method: "post",
-              url: "http://localhost:3001/api/rating/create",
+              url: URL+"/api/rating/create",
               data: ratingData,
               headers: { "Content-Type": "application/json" },
             }).then((response) => {
@@ -95,7 +96,6 @@ const Multiple = () => {
                                 />
                               </div>
                             </div>
-
                             <div class="form-group row">
                               <label class="col-sm-2 col-form-label">
                                 Option 2
@@ -148,7 +148,7 @@ const Multiple = () => {
                     </Icon.PlusCircleFill>{" "}
                     Add another Query
                     <br></br>
-                    <button type="submit" className="btn btn-success">
+                    <button type="submit" className="btn btn-primary">
                       Submit
                     </button>
                   </div>

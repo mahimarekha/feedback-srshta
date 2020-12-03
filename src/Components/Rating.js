@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
 import * as Yup from "yup";
+import URL  from '../app.config';
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Rating.css";
@@ -106,7 +107,7 @@ const Rating = () => {
                 };
                 axios({
                   method: "post",
-                  url: "http://localhost:3001/api/rating/create",
+                  url: URL+"/api/rating/create",
                   data: ratingData,
                   headers: { "Content-Type": "application/json" },
                 }).then((response) => {
@@ -232,11 +233,10 @@ const Rating = () => {
                             {/* <button type="submit" className="btn btn-success">
                               Submit
                             </button> */}
-                            <input
-                              type="submit"
-                              className="form-control button"
-                              value="Submit"
-                            />
+                            <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                            
                           </div>
                         </div>
                       </div>

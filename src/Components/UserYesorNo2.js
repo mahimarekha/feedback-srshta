@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import axios from "axios";
+import URL  from '../app.config';
 import { Link, useParams } from "react-router-dom";
 function UserYesorNo(props) {
   let { catId } = useParams();
@@ -30,13 +31,14 @@ function UserYesorNo(props) {
             name:values.Name,
             gender:values.Gender,
             age:values.Age,   
-            "userFeedback":userGivenAns
+            userFeedback:userGivenAns,
+            categoryId:catId  
           };
           console.log(ratingData);
           debugger
           axios({
             method: "post",
-            url: "http://localhost:3001/user_feedback/create",
+            url: URL+"/user_feedback/create",
             data: ratingData,
             headers: { "Content-Type": "application/json" },
           }).then((response) => {
@@ -63,7 +65,7 @@ function UserYesorNo(props) {
                     <div>
                       <label className="heading">Name:</label>
                       <div>
-                        <Field name="name" className="auto" />
+                        <Field name="Name" className="auto" />
                         {/* {errors.Businessname && touched.Businessname ? (
                             <div>{errors.Businessname}</div>
                           ) : null} */}
@@ -75,24 +77,24 @@ function UserYesorNo(props) {
                         <div>
                           <Field
                             type="radio"
-                            value="Multiple brands"
-                            name="gender"
+                            value=" Male"
+                            name="Gender"
                           />{" "}
                           Male
                         </div>
                         <div>
                           <Field
                             type="radio"
-                            value="Company with brands"
-                            name="gender"
+                            value="Female"
+                            name="Gender"
                           />{" "}
                           Female
                         </div>
                         <div>
                           <Field
                             type="radio"
-                            value="Stand alone Organization"
-                            name="gender"
+                            value="Other"
+                            name="Gender"
                           />{" "}
                           Other
                         </div>
@@ -101,7 +103,7 @@ function UserYesorNo(props) {
                     <div>
                       <label className="heading">Age:</label>
                       <div>
-                        <Field name="age" className="auto" />
+                        <Field name="Age" className="auto" />
                         {/* {errors.Businessname && touched.Businessname ? (
                             <div>{errors.Businessname}</div>
                           ) : null} */}

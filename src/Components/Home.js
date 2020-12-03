@@ -1,8 +1,9 @@
 import React from "react";
 import "./Home.css";
+import URL  from '../app.config';
 import target from "../target.png";
 import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
   Businessname: Yup.string()
@@ -89,7 +90,7 @@ const Home = () => (
     "password":values.password
 }
         axios({method:"post",
-        url:"http://localhost:3001/api/register" ,
+        url:URL+"/api/register" ,
         data: inputReq,
         headers: {'Content-Type': 'application/json' }})
         .then(response => {
@@ -125,7 +126,6 @@ const Home = () => (
                         </div>
                       </div>
                     </div>
-
                     <div className="form-group ">
                       <div>
                         <label className="heading">Address</label>
@@ -138,17 +138,14 @@ const Home = () => (
                         </div>
                       </div>
                     </div>
-
                     <div className="form-group ">
                       <div>
                         <label className="heading">Building Name</label>
-
                         <div className="color">
                           <Field name="Buildingname" className="width1" />
                         </div>
                       </div>
                     </div>
-
                     <div className="form-group ">
                       <div>
                         <label className="heading">Area/Localaity</label>
@@ -161,7 +158,6 @@ const Home = () => (
                         </div>
                       </div>
                     </div>
-
                     <div className="form-group ">
                       <div>
                         <label className="heading">City</label>
@@ -174,7 +170,6 @@ const Home = () => (
                         </div>
                       </div>
                     </div>
-
                     <div className="form-group ">
                       <div>
                         <label className="heading"> PIN no.</label>
@@ -193,14 +188,11 @@ const Home = () => (
                     <figure className="figure">
                       <div className="caption1">
                     <figcaption className="caption">Simplified Survey, Smart Analysis, Super Soultions.... </figcaption>
-                    
                     </div>
                       <img src={target} alt="Signup" />
-                      
                     </figure>
                   </div>
                 </div>
-
                 <div className="card-header card-header1"  style={{'background-color': "rgb(194 13 13 / 49%)"}}>
                   <div className="card-title">
                     <h6 className="latest_img my-0 green">
@@ -209,7 +201,6 @@ const Home = () => (
                     </h6>
                   </div>
                 </div>
-
                 <p className=" heading entity">Select Entity Type:</p>
                 <div className="radio">
                   <div>
@@ -222,7 +213,6 @@ const Home = () => (
                     <Field type="radio" value="Stand alone Organization" name="Entitytype" /> Stand alone Organization
                   </div>
                 </div>
-
                 <div className="card-header card-header1"  style={{'background-color': "rgb(194 13 13 / 49%)"}}>
                   <div className="card-title">
                     <h6 className="latest_img my-0 green">
@@ -246,7 +236,6 @@ const Home = () => (
                     <label className="heading" > Name</label>
                      <font color="red">*</font> */}
                   </div>
-
                   <div className="col-lg-4 ">
                   <label className="heading" > Name</label>
                      <font color="red">*</font>
@@ -270,7 +259,6 @@ const Home = () => (
                     <label className="heading" > Mobile</label>
                      <font color="red">*</font> */}
                   </div>
-
                   <div className="col-lg-4 ">                
                     <label className="heading" > Mobile</label>
                      <font color="red">*</font>
@@ -294,7 +282,6 @@ const Home = () => (
                     <label className="heading" >  E-Mail</label>
                     <font color="red">*</font> */}
                   </div>
-
                   <div className="col-lg-4 ">
                   <label className="heading" >  E-Mail</label>
                     <font color="red">*</font> 
@@ -324,16 +311,16 @@ const Home = () => (
                     <Field name="Secondarydesignation" className="width1" placeholder="Enter Secondary Designation" />{" "}                   
                   </div>
                 </div>
-
-
                       <div className="align-items-center save-btn-center">
-                  <label className=" heading"> password </label>
+                  <label className=" heading"> Password </label>
                     <Field type="password" name="password" className="width1" placeholder="Enter password " />{" "}
                     {errors.password && touched.password ? (
                       <div className="color">{errors.password}</div>
                     ) : null}
                 </div>
-
+                <div class="danger">
+  <p><strong>Note:</strong>Primary E-Mail is a Username</p>
+</div>
                 <div className="align-items-center save-btn-center">
                   <button type="submit" className="submit btn btn-success">
                     Submit                    

@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from 'axios';
-import { Link, useParams } from "react-router-dom";
+import URL  from '../app.config';
+import {  useParams } from "react-router-dom";
 import UserMultiple2 from "./UserMultiple2"
 // import UserRating2 from "./UserRating2";
 function Usermultiple() {
   const [ffgfgfgfgf, setData] = useState([]);
-  let { catId } = useParams();
+  let { catId, userId } = useParams();
+  const user = JSON.parse(sessionStorage.getItem("user"));
+            const ratingData = {
+              ratingType: "3",
+              userId: userId,
+              categoryId:catId
+            };
+            console.log(ratingData);
+ 
   useEffect(() => {
        axios({
             method: "post",
-            url: "http://localhost:3001/api/rating/getratinglist",
-            data: {"ratingType":"3","userId":"5", "categoryId":catId},
+            url: URL+"/api/rating/getratinglist",
+            data: ratingData,
             headers: { "Content-Type": "application/json" },
           }).then((response) => {
              setData(response.data);
           });
    
   }, []);
- 
   return  (
   <UserMultiple2  queryList={ffgfgfgfgf} />
   );

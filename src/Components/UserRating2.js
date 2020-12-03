@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import axios from "axios";
+import URL  from '../app.config';
 import { Link ,useParams} from 'react-router-dom';
 import "./UserRating2.css";
 function UserRating(props) {
@@ -32,13 +33,14 @@ function UserRating(props) {
             name:values.Name,
             gender:values.Gender,
             age:values.Age,   
-            "userFeedback":userGivenAns
+            userFeedback:userGivenAns,
+            categoryId:catId  
           };
           console.log(ratingData);
           debugger
           axios({
             method: "post",
-            url: "http://localhost:3001/user_feedback/create",
+            url: URL+"/user_feedback/create",
             data: ratingData,
             headers: { "Content-Type": "application/json" },
           }).then((response) => {

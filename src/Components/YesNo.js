@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
 import * as Yup from "yup";
+import URL  from '../app.config';
 import { Link ,useParams} from 'react-router-dom';
 import "./YesNo.css";
 import axios from "axios";
@@ -33,7 +34,7 @@ const YesNo = () => {
                             }  
                               axios({
             method: "post",
-            url: "http://localhost:3001/api/rating/create",
+            url: URL+"/api/rating/create",
             data: ratingData,
             headers: { "Content-Type": "application/json" },
              }).then((response) => {
@@ -91,7 +92,7 @@ alert("record saved successfully")
                             Add another Query
                           </div>
                           <div>
-                            <button type="submit" className="btn btn-success">
+                            <button type="submit" className="btn btn-primary">
                               Submit
                             </button>
                           </div>

@@ -137,3 +137,11 @@
     margin-bottom: 10px;
     margin-top: 14px;
   }
+  .danger {
+    background-color: #cd84bd85;
+    border-left: 6px solid #c46876
+  }
+  b, strong {
+    font-weight: bolder;
+    margin-left: 10px;
+}

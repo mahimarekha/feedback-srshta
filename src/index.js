@@ -4,7 +4,6 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.css";
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { ArrowRight } from 'react-bootstrap-icons';
 
 ReactDOM.render(
   <React.StrictMode>
