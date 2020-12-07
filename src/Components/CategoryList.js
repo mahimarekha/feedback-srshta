@@ -5,11 +5,11 @@ import "./CategoryList.css";
 function CategoryByQA() {
   const [getparam, setParam] = useState([]);
   const user = JSON.parse(sessionStorage.getItem("user"));
-  const ratingData = {
-    userId: user.id,
-  };
   const UI_Link ="http://localhost:3000/";
   function dropDown() {
+    const ratingData = {
+      userId: user.id,
+    };
     axios({
       method: "post",
       url: URL+"/category/getrating",
@@ -20,8 +20,11 @@ function CategoryByQA() {
     });
   }
   useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
     dropDown();
-  }, []);
+  }, [user,dropDown()]);
   
   return (
     <div>

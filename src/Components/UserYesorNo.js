@@ -3,6 +3,7 @@ import axios from 'axios';
 import URL  from '../app.config';
 import {  useParams } from "react-router-dom";
 import UserYesorNo2 from "./UserYesorNo2"
+// import history from './../history';
 // import UserRating2 from "./UserRating2";
 function UseryesorNo() {
   const [ffgfgfgfgf, setData] = useState([]);
@@ -15,9 +16,13 @@ function UseryesorNo() {
             };
             console.log(ratingData);
   useEffect(() => {
+    
+      // if(!user){
+      //  window.location.href ="/login";
+      // }
        axios({
             method: "post",
-            url: URL+"/api/rating/getratinglist",
+             url: URL+"/api/rating/getratinglist",
             data: ratingData,
             headers: { "Content-Type": "application/json" },
           }).then((response) => {

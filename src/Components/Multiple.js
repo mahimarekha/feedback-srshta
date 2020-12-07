@@ -1,16 +1,21 @@
-import React, { Component } from "react";
+import React, {  useEffect } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link, useParams } from "react-router-dom";
-import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
-import * as Yup from "yup";
+import {  useParams } from "react-router-dom";
+import { Field, FieldArray, Form, Formik } from "formik";
 import URL  from '../app.config';
 import "./Multiple.css";
 import axios from "axios";
 import * as Icon from "react-bootstrap-icons";
-import RatingTypeList from "./RatingTypeList";
+// import RatingTypeList from "./RatingTypeList";
 import "./Multiple.css";
 const Multiple = () => {
   let { catId } = useParams();
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
+    }, []);
   return (
     <div>
       <div className="container">
@@ -45,6 +50,7 @@ const Multiple = () => {
                 };
               }),
             };
+           
             axios({
               method: "post",
               url: URL+"/api/rating/create",

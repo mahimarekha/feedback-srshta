@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import React   from 'react';
+import { Formik, Form, Field, FieldArray } from "formik";
 import axios from "axios";
 import URL  from '../app.config';
-import { Link ,useParams} from 'react-router-dom';
+import {  useParams} from 'react-router-dom';
 import "./UserRating2.css";
 function UserRating(props) {
   let { catId } = useParams();
@@ -44,20 +44,13 @@ function UserRating(props) {
             data: ratingData,
             headers: { "Content-Type": "application/json" },
           }).then((response) => {
-            alert("record saved successfully");
-          });
-        }}
-      >
-        
+            alert("record saved successfully"); }); }} >
         {({ errors, touched, handleSubmit, validateForm }) => (
           <Form onSubmit={handleSubmit} autoComplete="off">
             <div className="container">
               <div className="card card1">
                 <div className="card-body card-body1 background">
-                  <div
-                    className="card-header card-header1"
-                    style={{ "background-color": "rgb(194 13 13 / 49%)" }}
-                  >
+                  <div className="card-header card-header1" style={{ "background-color": "rgb(194 13 13 / 49%)" }} >
                     <h6 className="card-title">
                       <p className="latest_img my-0 green">
                         <i className="fa fa-laptop"></i> User Rating
@@ -78,28 +71,13 @@ function UserRating(props) {
                       <p className=" heading entity">Select Gender Type:</p>
                       <div className="radio">
                         <div>
-                          <Field
-                            type="radio"
-                            value="Male"
-                            name="Gender"
-                          />{" "}
-                          Male
+                          <Field type="radio" value="Male" name="Gender"/>{" "} Male
                         </div>
                         <div>
-                          <Field
-                            type="radio"
-                            value="Female"
-                            name="Gender"
-                          />{" "}
-                          Female
+                          <Field type="radio" value="Female" name="Gender"/>{" "} Female
                         </div>
                         <div>
-                          <Field
-                            type="radio"
-                            value="Other"
-                            name="Gender"
-                          />{" "}
-                          Other
+                          <Field type="radio" value="Other" name="Gender" />{" "} Other
                         </div>
                       </div>
                     </div>

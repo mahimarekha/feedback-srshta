@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+
 import axios from "axios";
+import React, {  useEffect } from "react";
 import URL  from '../app.config';
 import { useHistory } from "react-router-dom";
 import "./Catogery.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
   categoryName: Yup.string(),
@@ -12,6 +13,12 @@ const SignupSchema = Yup.object().shape({
 });
 const Catogery = () => {
   const history = useHistory();
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
+    }, []);
   return (
     <div>
       <div>
@@ -29,6 +36,8 @@ const Catogery = () => {
               userId: user.id,
               description: values.description,
             };
+            
+            
             axios({
               method: "post",
               url: URL+"/category/create",

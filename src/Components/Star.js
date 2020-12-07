@@ -42,9 +42,13 @@ function Star() {
       setData(response.data);
     });
   }
+  
   useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
     dropDown();
-  }, []);
+  }, [user,dropDown]);
   return (
     <div>
       <div class="container">
@@ -73,6 +77,7 @@ function Star() {
                 <th> Age </th>
                 <th> Rating Type </th>
                 <th> Feedback </th>
+                <th> Created Date </th>
               </tr>
             </thead>
             {getdata.map((result, index) => {
@@ -101,6 +106,7 @@ function Star() {
                     <td>{result.gender}</td>
                     <td>{result.age}</td>
                     <td>{ratingType(result.ratingType)}</td>
+                    
                     <td>
                       <tr>
                         <th> Query</th>
@@ -110,9 +116,12 @@ function Star() {
                         <tr>
                           <td>{context.query}</td>
                           <td>{context.userAnswer}</td>
+                          
                         </tr>
                       ))}
+                      
                     </td>
+                    <td>{result.createdAt}</td>
                   </tr>
                 </tbody>
               );

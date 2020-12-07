@@ -1,16 +1,19 @@
-import React, { Component } from "react";
+import React, {  useEffect } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
-import * as Yup from "yup";
+import { Field, FieldArray, Form, Formik } from "formik";
 import URL  from '../app.config';
-import { Link ,useParams} from 'react-router-dom';
+import {  useParams} from 'react-router-dom';
 import "./YesNo.css";
 import axios from "axios";
 import * as Icon from "react-bootstrap-icons";
-import RatingTypeList from "./RatingTypeList";
-
 const YesNo = () => {
   let { catId } = useParams();
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
+    }, []);
   return (
     <div>
       <div className="container">        
@@ -32,7 +35,11 @@ const YesNo = () => {
                               return {query:data.query};
                             })
                             }  
+                            if(!user){
+                              window.location.href ="/login";
+                             }
                               axios({
+                                
             method: "post",
             url: URL+"/api/rating/create",
             data: ratingData,

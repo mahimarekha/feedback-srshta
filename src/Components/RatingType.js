@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React, {  useEffect } from "react";
 import "./RatingType.css";
 import { Link ,useParams} from 'react-router-dom';
 function RatingType() {
-  
     let { catId } = useParams();
-
-      
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    useEffect(() => {
+      if(!user){
+        window.location.href ="/login";
+       }
+      }, []);
     return (
       <div>
-         
         <div className="container1"> 
         <div className="container">
         <div className="row">

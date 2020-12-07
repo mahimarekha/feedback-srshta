@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 function RatingTypeList(props){
 const ratingDetails=props.ratingDetails;
 const ratingList=props.ratingDetails.ratingList;

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, {  useEffect } from "react";
 // import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Field, FieldArray, FieldProps, Form, Formik, getIn } from "formik";
+import { Field, FieldArray,  Form, Formik } from "formik";
 import * as Yup from "yup";
 import URL  from '../app.config';
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import axios from "axios";
 import "./Rating.css";
 import * as Icon from "react-bootstrap-icons";
@@ -75,6 +75,12 @@ const Rating = () => {
       ],
     },
   ];
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
+    }, []);
   return (
     <div>
       <div className="container">
@@ -105,6 +111,9 @@ const Rating = () => {
                     };
                   }),
                 };
+                if(!user){
+                  window.location.href ="/login";
+                 }
                 axios({
                   method: "post",
                   url: URL+"/api/rating/create",

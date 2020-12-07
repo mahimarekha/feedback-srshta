@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import React   from 'react';
+import { Formik, Form, Field, FieldArray } from "formik";
 import axios from "axios";
+
 import URL  from '../app.config';
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 function UserYesorNo(props) {
   let { catId } = useParams();
   const queryData = props.queryList.map((data) => {

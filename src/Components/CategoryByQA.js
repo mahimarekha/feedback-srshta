@@ -11,7 +11,7 @@ function CategoryByQA() {
   };
   console.log(ratingData);
   function dropDown() {
-    axios({
+        axios({
       method: "post",
       url: URL+"/category/getrating",
       data: ratingData,
@@ -43,8 +43,12 @@ function CategoryByQA() {
     });
   }
   useEffect(() => {
+    if(!user){
+      window.location.href ="/login";
+     }
     dropDown();
-  }, []);
+    
+  }, [user,dropDown]);
   return (
     <div>
       <div class="container">
@@ -58,21 +62,18 @@ function CategoryByQA() {
         })}
       </select>
         <div className="cen">
-        
       </div>
         <div class="table-responsive">
           <table
             class="table table-bordered   table-striped"
             // style="margin-top:100px"
           >
-               
             <thead class="table__head">
               <tr class="winner__table">
                 <th>S/N0.</th>
                 <th> Rating Type </th>
-                <th> queryName </th>
-                <th> queryOptions </th>
-               
+                <th> Query Name </th>
+                <th> Query Options </th>               
               </tr>
             </thead>
             {getdata.map((result, index) => {
@@ -93,15 +94,16 @@ function CategoryByQA() {
                 }
                 return type;
               }
-            
               return (
                 <tbody>
                   <tr class="winner__table">
                     <td>{index + 1}</td>
                     <td>{ratingType(result.ratingTypeId)}</td>
                     <td>{result.queryName}</td>
-                    <td>{result.queryOptions}</td>
-                   
+                    <td>{result.ratingTypeId==="2"?
+                    "Yes or No"
+                   : result.queryOptions}
+                    </td>
                   </tr>
                 </tbody>
               );

@@ -16,6 +16,7 @@ function Usermultiple() {
             console.log(ratingData);
  
   useEffect(() => {
+    
        axios({
             method: "post",
             url: URL+"/api/rating/getratinglist",

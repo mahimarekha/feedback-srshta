@@ -14,7 +14,12 @@ import Catogery from "./Components/Catogery";
 import Star from "./Components/Star";
 import CategoryByQA from "./Components/CategoryByQA";
 import CategoryList from "./Components/CategoryList";
+import history from './history';
 class App extends Component {
+   handleClick=()=> {
+    sessionStorage.removeItem("user");
+    history.push("/login");
+  }
   render() {
     const isValid =  JSON.parse(sessionStorage.getItem("user"));
      const getNavBar = ()=>{
@@ -26,13 +31,14 @@ class App extends Component {
         return (<nav>
           <div class="header heade ">
             <a href="#default" class="logo">
-             <img  className="class"src="https://srshta.com/images/srshta-logo.png"/>
+             <img  className="class"src="https://srshta.com/images/srshta-logo.png" alt="srshta"/>
             </a>
             <div class="header-right heade-right">
               <a class="active" href="/CategoryList">
                 Category List
               </a>
               <a href="/Star">User Query</a>
+              <a href="/login" onClick={this.handleClick}>Logout</a>
             </div>
           </div>
         </nav>);

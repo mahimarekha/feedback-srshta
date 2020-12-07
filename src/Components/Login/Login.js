@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Login.css";
 import URL from "../../app.config";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Card from "../Login/Card";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { BrowserRouter as Link } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
   Username: Yup.string()
@@ -44,6 +44,8 @@ const Login = () => {
                 const arrayResult = response.data.result[0];
                 sessionStorage.setItem("user", JSON.stringify(arrayResult));
                 history.push("/catogery");
+                window.location.reload();
+
               }
             });
           }}
