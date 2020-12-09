@@ -48,7 +48,7 @@ function CategoryByQA() {
      }
     dropDown();
     
-  }, [user,dropDown]);
+  }, []);
   return (
     <div>
       <div class="container">

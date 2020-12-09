@@ -5,26 +5,27 @@ import "./CategoryList.css";
 function CategoryByQA() {
   const [getparam, setParam] = useState([]);
   const user = JSON.parse(sessionStorage.getItem("user"));
-  const UI_Link ="http://localhost:3000/";
-  function dropDown() {
-    const ratingData = {
-      userId: user.id,
-    };
-    axios({
-      method: "post",
-      url: URL+"/category/getrating",
-      data: ratingData,
-      headers: { "Content-Type": "application/json" },
-    }).then((response) => {
-      setParam(response.data);
-    });
-  }
+  const UI_Link ="https://feedback-srshta-app-o16wyy579.vercel.app/";
+
   useEffect(() => {
     if(!user){
       window.location.href ="/login";
      }
+     function dropDown() {
+      const ratingData = {
+        userId: user.id,
+      };
+      axios({
+        method: "post",
+        url: URL+"/category/getrating",
+        data: ratingData,
+        headers: { "Content-Type": "application/json" },
+      }).then((response) => {
+        setParam(response.data);
+      });
+    }
     dropDown();
-  }, [user,dropDown()]);
+  }, []);
   
   return (
     <div>
