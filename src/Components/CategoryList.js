@@ -15,6 +15,7 @@ function CategoryByQA() {
       const ratingData = {
         userId: user.id,
       };
+      
       axios({
         method: "post",
         url: URL+"/category/getrating",
